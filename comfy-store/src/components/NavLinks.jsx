@@ -11,14 +11,18 @@ const links = [
   { id: 6, url: 'orders', text: 'orders' },
 ];
 
-const NavLinks = () => {
+const NavLinks = ({ setShowBtn }) => {
   return (
     <>
       {links.map((link) => {
         const { id, url, text } = link;
         return (
           <li key={id} className='p-1'>
-            <NavLink className='capitalize py-2' to={url}>
+            <NavLink
+              onClick={(prev) => setShowBtn(!prev)}
+              className='capitalize py-2'
+              to={url}
+            >
               {text}
             </NavLink>
           </li>

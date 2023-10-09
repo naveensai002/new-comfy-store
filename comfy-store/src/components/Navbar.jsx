@@ -16,6 +16,11 @@ const getThemeFromLocalStorage = () => {
 
 const Navbar = () => {
   const [theme, setTheme] = useState(getThemeFromLocalStorage);
+  const [showBtn, setShowBtn] = useState(false);
+
+  const btnToggleHandle = () => {
+    setShowBtn((prev) => !prev);
+  };
 
   const handleTheme = () => {
     const { light, dark } = themes;
@@ -41,15 +46,21 @@ const Navbar = () => {
           </NavLink>
           {/* DROPDOWN */}
           <div className='dropdown'>
-            <label tabIndex={0} className='btn btn-ghost lg:hidden'>
+            <label
+              tabIndex={0}
+              className='btn btn-ghost lg:hidden'
+              onClick={btnToggleHandle}
+            >
               <FaBarsStaggered className='h-6 w-6' />
             </label>
-            <ul
-              tabIndex={0}
-              className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52'
-            >
-              <NavLinks />
-            </ul>
+            {showBtn && (
+              <ul
+                tabIndex={0}
+                className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52'
+              >
+                <NavLinks setShowBtn={setShowBtn} />
+              </ul>
+            )}
           </div>
         </div>
         <div className='navbar-center hidden md:flex lg:flex'>
