@@ -21,9 +21,9 @@ const Hero = () => {
           totam! Excepturi!
         </p>
         <div className='mt-10 capitalize flex '>
-          <Link to='/products' className='font-bold'>
+          <Link to='/products' className='font-bold uppercase'>
             Our
-            <span className='ml-3 link link-hover bg-rose-400 p-4 rounded-xl gap-x-4 text-md text-black font-semibold uppercase'>
+            <span className='ml-3 link link-hover hover:bg-gradient-to-r from-rose-500 p-4 rounded-xl gap-x-4 text-md text-black font-semibold uppercase'>
               products
             </span>
           </Link>

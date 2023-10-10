@@ -25,8 +25,11 @@ const Error = () => {
     );
   }
   return (
-    <main className='flex flex-row min-h-screen items-center justify-center'>
+    <main className='flex  min-h-screen flex-col items-center justify-center'>
       <h4 className='text-center font-bold text-4xl'>There was an error...</h4>
+      <button className='btn btn-primary mt-12'>
+        <Link to='/'>Back home</Link>
+      </button>
     </main>
   );
 };
