@@ -19,12 +19,12 @@ const ProductsGrid = () => {
               key={product.id}
               to={`/products/${product.id} className ='card w-full shadow-xl hover:shadow-2xl transition duration-300`}
             >
-              <figure className='px-4 py-4g group transition cursor-pointer'>
-                <div className='relative group-hover:opacity-70'>
+              <figure className='px-4 py-4g  transition cursor-pointer'>
+                <div className='relative group '>
                   <img
                     src={image}
                     alt={title}
-                    className='rounded-xl relative h-64 md:h-48 object-cover w-full'
+                    className='rounded-xl relative h-64 md:h-48 object-cover w-full group-hover:opacity-60'
                   />
                   <div className='absolute opacity-0 p-2 rounded-full group-hover:opacity-100 transition top-[48%] left-[48%] z-10 bg-rose-500'>
                     <BiSearch size={26} className='text-white' />
