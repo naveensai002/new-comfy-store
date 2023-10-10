@@ -6,6 +6,7 @@ import { formatPrice } from '../utils/formatPrice';
 
 const ProductsGrid = () => {
   const { products } = useLoaderData();
+
   // console.log(products.slice(0, 4));
   return (
     <div className='grid gap-6 pt-12 md:grid-cols-2  '>
@@ -38,7 +39,7 @@ const ProductsGrid = () => {
                   </h2>
                   <span className='text-secondary'>{dollarsAmount}</span>
                   <div className='card-actions'>
-                    <button className='btn btn-primary'>Add to cart</button>
+                    <button className='btn btn-primary'>check product</button>
                   </div>
                 </div>
               </figure>
