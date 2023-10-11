@@ -5,9 +5,9 @@ import { customFetch } from '../utils';
 //data that we are defining in loader we can access any where we want in nested children
 
 export const loader = async () => {
-  const res = await customFetch('?featured=true');
+  const response = await customFetch('/products?featured=true');
   // console.log(res.data);
-  const products = res?.data;
+  const products = response.data.data;
   return { products };
 };
 

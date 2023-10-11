@@ -4,14 +4,12 @@ import { Link, useLoaderData } from 'react-router-dom';
 import { customFetch } from '../utils';
 import { Filters, ProductsContainer, PaginationContainer } from '../components';
 
-const url = ' https://strapi-store-server.onrender.com/api';
-
 export const loader = async () => {
-  const res = await axios(`${url}/products`);
+  const response = await customFetch(`/products`);
   // console.log(res.data);
-  const products = res.data.data;
-  const meta = res.data.meta;
-  return { meta, products };
+  const products = response.data.data;
+  const meta = response.data.meta;
+  return { products, meta };
 };
 
 const Products = () => {
