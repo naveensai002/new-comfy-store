@@ -12,3 +12,5 @@ export { default as Stars } from './Stars';
 export { default as Filters } from './Filters';
 export { default as ProductsContainer } from './ProductsContainer';
 export { default as PaginationContainer } from './PaginationContainer';
+export { default as FormSelect } from './FormSelect';
+export { default as Loading } from './Loading';
