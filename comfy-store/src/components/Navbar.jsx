@@ -5,6 +5,8 @@ import { BsCart3, BsMoonFill, BsSunFill } from 'react-icons/bs';
 import { FaBarsStaggered } from 'react-icons/fa6';
 import NavLinks from './NavLinks';
 
+import { useSelector } from 'react-redux';
+
 const themes = {
   light: 'light',
   dark: 'dark',
@@ -15,6 +17,10 @@ const getThemeFromLocalStorage = () => {
 };
 
 const Navbar = () => {
+  const totalInCart = useSelector((state) => state.cart.numItemsInCart);
+
+  // console.log(totalInCart);
+
   const [theme, setTheme] = useState(getThemeFromLocalStorage);
   const [showBtn, setShowBtn] = useState(false);
 
@@ -81,7 +87,7 @@ const Navbar = () => {
             <div className='indicator'>
               <BsCart3 className='h-6 w-6' />
               <span className='badge badge-sm badge-primary indicator-item'>
-                3
+                {totalInCart}
               </span>
             </div>
           </NavLink>
