@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import { NavLink } from 'react-router-dom';
 
@@ -12,10 +13,14 @@ const links = [
 ];
 
 const NavLinks = ({ setShowBtn }) => {
+  const user = useSelector((state) => state?.user?.user);
   return (
     <>
       {links.map((link) => {
         const { id, url, text } = link;
+        if (url === 'checkout' || (url === 'orders' && !user)) {
+          return null;
+        }
         return (
           <li key={id} className='p-1'>
             <NavLink

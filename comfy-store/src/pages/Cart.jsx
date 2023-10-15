@@ -6,9 +6,8 @@ import { CartItemsList, SectionTitle, CartTotal } from '../components';
 
 const Cart = () => {
   const numItemsInCart = useSelector((state) => state?.cart?.numItemsInCart);
-  console.log(numItemsInCart);
-
-  const user = null;
+  const user = useSelector((state) => state?.user?.user);
+  // console.log(numItemsInCart);
 
   if (numItemsInCart < 1) {
     return (
@@ -116,14 +115,14 @@ const Cart = () => {
         <div className='lg:col-span-8'>
           <CartItemsList />
         </div>
-        <div className='lg:col-span-4 lg:pl-4 flex flex-col items-center w-full'>
+        <div className=' lg:col-span-4 lg:pl-4 flex flex-col items-center w-full '>
           <CartTotal />
           {user ? (
-            <Link to='/checkout' className='mt-8 btn btn-primary'>
+            <Link to='/checkout' className='mt-8 btn btn-primary w-3/4 '>
               Checkout
             </Link>
           ) : (
-            <Link to='/login' className='mt-8 btn btn-secondary '>
+            <Link to='/login' className='mt-8 btn btn-secondary w-3/4  '>
               Sign in to checkout
             </Link>
           )}
