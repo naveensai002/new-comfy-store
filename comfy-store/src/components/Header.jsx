@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -11,12 +11,12 @@ const Header = () => {
   const { loginWithRedirect, user, isAuthenticated, logout, isLoading } =
     useAuth0();
   // const { loginWithRedirect } = useAuth0();
-  console.log(isAuthenticated);
+  // console.log(isAuthenticated);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    navigate('/');
+    // navigate('/');
     dispatch(clearCart());
     dispatch(logoutUser());
   };
@@ -30,12 +30,10 @@ const Header = () => {
               Hello, {user.name}
             </p>
             <button
-              onClick={
-                () =>
-                  logout({
-                    logoutParams: { returnTo: window.location.origin },
-                  })
-                // handleLogout
+              onClick={() =>
+                logout({
+                  logoutParams: { returnTo: window.location.origin },
+                })
               }
               className='btn btn-xs btn-outline btn-warning'
             >
