@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-
+import { useAuth0 } from '@auth0/auth0-react';
 import { NavLink } from 'react-router-dom';
 
 const links = [
@@ -13,12 +13,13 @@ const links = [
 ];
 
 const NavLinks = ({ setShowBtn }) => {
-  const user = useSelector((state) => state?.user?.user);
+  const { user, isAuthenticated } = useAuth0();
+  // const user = useSelector((state) => state?.user?.user);
   return (
     <>
       {links.map((link) => {
         const { id, url, text } = link;
-        if (url === 'checkout' || (url === 'orders' && !user)) {
+        if ((url === 'checkout' || url === 'orders') && !isAuthenticated) {
           return null;
         }
         return (
