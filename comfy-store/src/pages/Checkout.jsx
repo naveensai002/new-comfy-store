@@ -1,29 +1,29 @@
 import React from 'react';
-import { CartTotal, FormInput, SectionTitle } from '../components';
+import { CartTotal, FormInput, SectionTitle, SubmitBtn } from '../components';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { redirect } from 'react-router-dom';
+import { redirect, Form } from 'react-router-dom';
 import { toast } from 'sonner';
 import { useAuth0 } from '@auth0/auth0-react';
 
 export const loader = (store) => () => {
-  if (!user) {
-    toast.warn('You must be logged in to checkout');
-    return redirect('/login');
-  }
+  // if (!user) {
+  //   toast.warn('You must be logged in to checkout');
+  //   return redirect('/login');
+  // }
   return null;
 };
 
 const Checkout = () => {
   const cartItems = useSelector((state) => state.cart.numItemsInCart);
 
-  const { isAuthenticated } = useAuth0();
-  console.log(isAuthenticated);
+  // const { isAuthenticated } = useAuth0();
+  // console.log(isAuthenticated);
 
-  if (!isAuthenticated) {
-    toast.warn('You must be logged in to checkout');
-    return redirect('/login');
-  }
+  // if (!isAuthenticated) {
+  //   toast.error('You must be logged in to checkout');
+  //   return redirect('/login');
+  // }
 
   if (!cartItems) {
     return (
@@ -42,13 +42,14 @@ const Checkout = () => {
   }
   return (
     <div className='flex flex-row justify-between gap-x-16'>
-      <div className='w-2/4'>
-        <SectionTitle text='Place your order' />
-        <FormInput label='Name' type='text' name='name' />
-        <FormInput label='Address' type='text' name='address' />
-        <Link to='/orders' className='mt-8 btn btn-primary w-full '>
-          place your orders
-        </Link>
+      <div className='w-2/4  '>
+        <Form method='post' className='flex flex-col gap-y-4'>
+          <h4>shipping information</h4>
+          <FormInput label='Name' type='text' name='name' />
+          <FormInput label='Address' type='text' name='address' />
+
+          <SubmitBtn text='place your order' />
+        </Form>
       </div>
       <div className='w-2/4 justify-center align-middle '>
         <CartTotal />
