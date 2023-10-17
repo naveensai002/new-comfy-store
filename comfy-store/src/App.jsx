@@ -23,6 +23,9 @@ import { loader as singleProductLoader } from './pages/SingleProduct';
 import { loader as productsLoader } from './pages/Products';
 import { loader as checkoutLoader } from './pages/Checkout';
 
+import { action as registerAction } from './pages/Register';
+import { action as loginAction } from './pages/Login';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -62,11 +65,13 @@ const router = createBrowserRouter([
     path: '/login',
     element: <Login />,
     errorElement: <Error />,
+    action: loginAction(store),
   },
   {
     path: '/Register',
     element: <Register />,
     errorElement: <Error />,
+    action: registerAction,
   },
 ]);
 

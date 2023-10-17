@@ -4,26 +4,19 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { redirect, Form } from 'react-router-dom';
 import { toast } from 'sonner';
-import { useAuth0 } from '@auth0/auth0-react';
 
 export const loader = (store) => () => {
-  // if (!user) {
-  //   toast.warn('You must be logged in to checkout');
-  //   return redirect('/login');
-  // }
+  const user = store.getState().userState.user;
+
+  if (!user) {
+    toast.error('You must be logged in to checkout');
+    return redirect('/login');
+  }
   return null;
 };
 
 const Checkout = () => {
   const cartItems = useSelector((state) => state.cart.numItemsInCart);
-
-  // const { isAuthenticated } = useAuth0();
-  // console.log(isAuthenticated);
-
-  // if (!isAuthenticated) {
-  //   toast.error('You must be logged in to checkout');
-  //   return redirect('/login');
-  // }
 
   if (!cartItems) {
     return (
