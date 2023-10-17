@@ -11,9 +11,13 @@ const getThemeFromLocalStorage = () => {
   document.documentElement.setAttribute('data-theme', theme);
   return theme;
 };
+const getUserFromLocalStorage = () => {
+  return JSON.parse(localStorage.getItem('user')) || null;
+};
 
 const initialState = {
-  user: { username: 'naveen sai' },
+  // user: { username: null },
+  user: getUserFromLocalStorage(),
   theme: getThemeFromLocalStorage(),
 };
 

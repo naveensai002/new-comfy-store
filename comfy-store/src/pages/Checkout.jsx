@@ -6,10 +6,11 @@ import { redirect, Form } from 'react-router-dom';
 import { toast } from 'sonner';
 
 export const loader = (store) => () => {
-  const user = store.getState().userState.user;
+  // console.log(store.getState().user.user);
+  const user = store.getState().user.user;
 
   if (!user) {
-    toast.error('You must be logged in to checkout');
+    toast.error('you must be logged in first');
     return redirect('/login');
   }
   return null;

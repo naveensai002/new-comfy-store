@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { useAuth0 } from '@auth0/auth0-react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const links = [
   { id: 1, url: '/', text: 'home' },
@@ -13,24 +12,24 @@ const links = [
 ];
 
 const NavLinks = ({ setShowBtn }) => {
-  const { user, isAuthenticated } = useAuth0();
-  // const user = useSelector((state) => state?.user?.user);
+  const user = useSelector((state) => state?.user?.user);
+  console.log(user);
   return (
     <>
       {links.map((link) => {
         const { id, url, text } = link;
-        if ((url === 'checkout' || url === 'orders') && !isAuthenticated) {
+        if ((url === 'checkout' || url === 'orders') && !user) {
           return null;
         }
         return (
           <li key={id} className='p-1'>
-            <NavLink
+            <Link
               onClick={(prev) => setShowBtn(!prev)}
               className='capitalize py-2'
               to={url}
             >
               {text}
-            </NavLink>
+            </Link>
           </li>
         );
       })}
