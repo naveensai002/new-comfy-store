@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { redirect, Form } from 'react-router-dom';
 import { toast } from 'sonner';
+import CheckoutForm from '../components/CheckoutForm';
 
 export const loader = (store) => () => {
   // console.log(store.getState().user.user);
@@ -37,13 +38,7 @@ const Checkout = () => {
   return (
     <div className='flex flex-row justify-between gap-x-16'>
       <div className='w-2/4  '>
-        <Form method='post' className='flex flex-col gap-y-4'>
-          <h4>shipping information</h4>
-          <FormInput label='Name' type='text' name='name' />
-          <FormInput label='Address' type='text' name='address' />
-
-          <SubmitBtn text='place your order' />
-        </Form>
+        <CheckoutForm />
       </div>
       <div className='w-2/4 justify-center align-middle '>
         <CartTotal />

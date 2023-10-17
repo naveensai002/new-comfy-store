@@ -13,7 +13,7 @@ const links = [
 
 const NavLinks = ({ setShowBtn }) => {
   const user = useSelector((state) => state?.user?.user);
-  console.log(user);
+  // console.log(user);
   return (
     <>
       {links.map((link) => {
