@@ -11,7 +11,9 @@ const OrderList = () => {
   return (
     <div className='mt-8'>
       <div className='mt-4'>
-        <h4 className='font-bold capitalize text-xl'>Total orders:10</h4>
+        <h4 className='font-bold capitalize text-xl'>
+          Total orders: {meta.pagination.total}
+        </h4>
         <div className='pt-4'>
           <table className='table table-zebra'>
             <thead>
