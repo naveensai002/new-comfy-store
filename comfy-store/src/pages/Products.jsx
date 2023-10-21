@@ -7,6 +7,7 @@ import { Filters, ProductsContainer, PaginationContainer } from '../components';
 const allProductsQuery = (queryParams) => {
   const { search, category, company, sort, price, shipping, page } =
     queryParams;
+
   return {
     queryKey: [
       'products',
@@ -20,7 +21,7 @@ const allProductsQuery = (queryParams) => {
     ],
     queryFn: () =>
       customFetch(`/products`, {
-        queryParams,
+        params: queryParams,
       }),
   };
 };
